@@ -29,6 +29,7 @@ on:
         options:
         - twrp_12.1
         - twrp_14.1
+        - stable
         - test
         - tmp
       DEVICE_PATH:
