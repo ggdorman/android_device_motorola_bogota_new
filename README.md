@@ -3,8 +3,8 @@
 Officially released on May 29 2025
 
 # Maintainers
-~~- [TeamWin Recovery Project](https://github.com/TeamWin) - developer manifest~~
-~~- [OrangeFox Recovery Project](https://gitlab.com/OrangeFox) - developer manifest~~
+- [TeamWin Recovery Project](https://github.com/TeamWin) - developer manifest
+- [OrangeFox Recovery Project](https://gitlab.com/OrangeFox) - developer manifest
 - [ggdorman](https://github.com/ggdorman/) - Device owner and developer
 
 # Motorola G56 5G
