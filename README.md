@@ -1,15 +1,15 @@
-# TWRP device tree for Motorola Edge 50 Neo (bogota)
+# OrangeFox (TWRP) device tree for Motorola Moto G56 5G (bogota)
 
-Official released on August 29 2024
+Officially released on May 29 2025
 
 # Maintainers
-- [TeamWin Recovery Project](https://github.com/TeamWin) - developer manifest
-- [OrangeFox Recovery Project](https://gitlab.com/OrangeFox) - developer manifest
-- [Cloud](https://github.com/DeviceTree) - Device owner and developer
+~~- [TeamWin Recovery Project](https://github.com/TeamWin) - developer manifest~~
+~~- [OrangeFox Recovery Project](https://gitlab.com/OrangeFox) - developer manifest~~
+~~- [Cloud](https://github.com/DeviceTree) - Device owner and developer~~
 
-# Motorola Edge 50 Neo
+# Motorola G56 5G
 <p align="left" width="100%">
-<img width="33%" src="https://github.com/DeviceTree/Images/blob/main/Moto-Edge-50-Neo.png"> 
+<img width="33%" src="https://github.com/DeviceTree/Images/blob/main/Moto-Edge-50-Neo.png">
 </p>
 
 
@@ -19,24 +19,23 @@ Official released on August 29 2024
 
 | Basic                        | Spec Sheet                                                                    |
 | ---------------------------: | :-----------------------------------------------------------------------------|
-| Chipset                      | Mediatek Dimensity 7300 (MT6878)                                              |
-| CPU                          | Octa-core (4x2.5 GHz Cortex-A78 & 4x2.0 GHz Cortex-A55)                       |
-| GPU                          | Mali-G615 MC2                                                                 |
-| Memory                       | 8/12 GB RAM (LPDDR4X)                                                         |
-| Shipped OS                   | Android 14                                                                    |
-| Storage                      | 256/512 GB (UFS 2.2)                                                          |
+| Chipset                      | Mediatek Dimensity 7060 (MT6855)                                              |
+| CPU                          | Octa-core (2x2.6 GHz Cortex-A78 & 6x2.0 GHz Cortex-A55)                       |
+| GPU                          | IMG BXM-8-256                                                                 |
+| Memory                       | 4/8/12 GB RAM                                                                 |
+| Shipped OS                   | Android 15                                                                    |
+| Storage                      | 128/256/512 GB (UFS 2.1)                                                      |
 | SIM                          | dual Nano-SIM, eSIM                                                           |
 | MicroSD                      | No                                                                            |
-| Battery                      | 4310mAh Li-ion (non-removable), 68W fast charge                               |
-| Dimensions                   | 154.1 x 71.2 x 8.1 mm                                                         |
-| Display                      | 6.4" 2400x1080 pixels, 20:9 ratio, 120Hz (~460 ppi)                           |
-| Rear Camera 1                | 50 MP, f/1.8 OIS                                                              |
-| Rear Camera 2                | 10 MP, f/2.0 (telephoto)                                                      |
-| Rear Camera 3                | 13 MP, f/2.2, (macro)                                                         |
-| Front Camera                 | 32 MP, f/2.4                                                                  |
-| Fingerprint                  | under display, optical                                                        |
+| Battery                      | 5200mAh Li-ion (non-removable), 30W fast charge                               |
+| Dimensions                   | 165.8 x 76.3 x 8.4 mm (6.53 x 3.00 x 0.33 in)                                 |
+| Display                      | 6.72" 2400x1080 pixels, 20:9 ratio, 120Hz (~392 ppi)                          |
+| Rear Camera 1                | 50 MP, f/1.8 PDAF                                                             |
+| Rear Camera 2                | 8 MP, f/2.2 (ultrawide)                                                       |
+| Front Camera                 | 32 MP, f/2.2                                                                  |
+| Fingerprint                  | side-mounted (power button)                                                   |
 | Sensors                      | accelerometer, gyroscope, light sensor, proximity sensor, compass             |
-| Extras                       | Dual speakers, NFC, HDR10+ support, Always on Display                         |
+| Extras                       | Dual speakers, NFC, HDR10+ support, Always on Display, 3.5mm audio jack       |
 
 
 
