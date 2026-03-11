@@ -9,7 +9,7 @@ Officially released on May 29 2025
 
 # Motorola G56 5G
 <p align="left" width="100%">
-<img width="33%" src="https://github.com/DeviceTree/Images/blob/main/Moto-Edge-50-Neo.png">
+<img width="33%" src="https://fdn2.gsmarena.com/vv/pics/motorola/motorola-moto-g56-1.jpg">
 </p>
 
 
