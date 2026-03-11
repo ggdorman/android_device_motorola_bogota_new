@@ -20,7 +20,7 @@ on:
       DEVICE_TREE:
         description: 'OrangeFox Device Tree'
         required: true
-        default: 'https://github.com/ChimpanziCloud/android_device_motorola_bogota_new.git'
+        default: 'https://github.com/DeviceTree/android_device_motorola_bogota_new.git'
       DEVICE_TREE_BRANCH:
         description: 'OrangeFox Device Tree Branch'
         required: true

@@ -5,11 +5,11 @@ Official released on August 29 2024
 # Maintainers
 - [TeamWin Recovery Project](https://github.com/TeamWin) - developer manifest
 - [OrangeFox Recovery Project](https://gitlab.com/OrangeFox) - developer manifest
-- [Cloud](https://github.com/ChimpanziCloud) - Device owner and developer
+- [Cloud](https://github.com/DeviceTree) - Device owner and developer
 
 # Motorola Edge 50 Neo
 <p align="left" width="100%">
-<img width="33%" src="https://github.com/ChimpanziCloud/Images/blob/main/Moto-Edge-50-Neo.png"> 
+<img width="33%" src="https://github.com/DeviceTree/Images/blob/main/Moto-Edge-50-Neo.png"> 
 </p>
 
 
@@ -100,7 +100,7 @@ cd ~/OrangeFox_sync/sync/
 **Cloning the device tree**
 ```bash
 cd ~/fox_12.1
-git clone https://github.com/ChimpanziCloud/android_device_motorola_bogota.git -b twrp-12.1 device/motorola/bogota
+git clone https://github.com/DeviceTree/android_device_motorola_bogota.git -b twrp-12.1 device/motorola/bogota
 ```
 **Build**
 ```bash
@@ -122,7 +122,7 @@ repo sync
 **Cloning the device tree**
 ```bash
 cd ~/twrp_12.1
-git clone https://github.com/ChimpanziCloud/android_device_motorola_bogota.git -b twrp-12.1 device/motorola/bogota
+git clone https://github.com/DeviceTree/android_device_motorola_bogota.git -b twrp-12.1 device/motorola/bogota
 ```
 **Build**
 ```bash
