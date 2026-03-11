@@ -1,4 +1,4 @@
-# TWRP device tree for Motorola Edge 50 Neo (vienna)
+# TWRP device tree for Motorola Edge 50 Neo (bogota)
 
 Official released on August 29 2024
 
@@ -100,11 +100,11 @@ cd ~/OrangeFox_sync/sync/
 **Cloning the device tree**
 ```bash
 cd ~/fox_12.1
-git clone https://github.com/ChimpanziCloud/android_device_motorola_vienna.git -b twrp-12.1 device/motorola/vienna
+git clone https://github.com/ChimpanziCloud/android_device_motorola_bogota.git -b twrp-12.1 device/motorola/bogota
 ```
 **Build**
 ```bash
-build/envsetup.sh; lunch twrp_vienna-eng && mka adbd vendorbootimage
+build/envsetup.sh; lunch twrp_bogota-eng && mka adbd vendorbootimage
 ```
 ## To Build with TeamWin manifest (Not Reccomended/Broken)
 **Clone manifest twrp-12.1**
@@ -122,11 +122,11 @@ repo sync
 **Cloning the device tree**
 ```bash
 cd ~/twrp_12.1
-git clone https://github.com/ChimpanziCloud/android_device_motorola_vienna.git -b twrp-12.1 device/motorola/vienna
+git clone https://github.com/ChimpanziCloud/android_device_motorola_bogota.git -b twrp-12.1 device/motorola/bogota
 ```
 **Build**
 ```bash
-export ALLOW_MISSING_DEPENDENCIES=true; . build/envsetup.sh; lunch twrp_vienna-eng
+export ALLOW_MISSING_DEPENDENCIES=true; . build/envsetup.sh; lunch twrp_bogota-eng
 mka vendorbootimage
 ```
 ## Common Fixes

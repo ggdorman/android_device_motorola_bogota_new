@@ -2,12 +2,12 @@
 # Local Makefile
 # ========================================
 PRODUCT_MAKEFILES := \
-     $(LOCAL_DIR)/twrp_vienna.mk
+     $(LOCAL_DIR)/twrp_bogota.mk
 
 # ========================================
 # Lunch Choices
 # ========================================
 COMMON_LUNCH_CHOICES := \
-    twrp_vienna-user \
-    twrp_vienna-userdebug \
-    twrp_vienna-eng
+    twrp_bogota-user \
+    twrp_bogota-userdebug \
+    twrp_bogota-eng

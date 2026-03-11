@@ -1,8 +1,8 @@
 # ========================================
 # Variables
 # ========================================
-LOCAL_PATH := device/motorola/vienna
-DEVICE_PATH := device/motorola/vienna
+LOCAL_PATH := device/motorola/bogota
+DEVICE_PATH := device/motorola/bogota
 
 # Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -96,6 +96,6 @@ PRODUCT_PACKAGES += \
 
 # To fix bootloop due to missing files
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/motorola/vienna/prebuilt/modules,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules) \
+    $(call find-copy-subdir-files,*,device/motorola/bogota/prebuilt/modules,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules) \
     $(LOCAL_PATH)/recovery/root/first_stage_ramdisk/fstab.mt6878:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6878 \
     $(LOCAL_PATH)/recovery/root/first_stage_ramdisk/fstab.emmc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.emmc

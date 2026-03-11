@@ -1,7 +1,7 @@
 # ========================================
 # Build Rules
 # ========================================
-DEVICE_PATH := device/motorola/vienna
+DEVICE_PATH := device/motorola/bogota
 ALLOW_MISSING_DEPENDENCIES := true
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
@@ -37,7 +37,7 @@ TW_LOAD_VENDOR_MODULES := "goodix_gt96x_u_mmi.ko goodix_brl_u_mmi.ko touchscreen
 # ========================================
 # Variables (Device-Specific)
 # ========================================
-TARGET_OTA_ASSERT_DEVICE := vienna
+TARGET_OTA_ASSERT_DEVICE := bogota
 TARGET_BOARD_PLATFORM := mt6878
 TARGET_BOOTLOADER_BOARD_NAME := mgvi_64_ww_armv82
 TARGET_NO_BOOTLOADER := true

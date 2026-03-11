@@ -5,7 +5,7 @@ export ALLOW_MISSING_DEPENDENCIES=true
 export LC_ALL="C"
 
 # Build Device Codename
-export FOX_BUILD_DEVICE=vienna
+export FOX_BUILD_DEVICE=bogota
 
 # Device uses virtual ab ota update
 export FOX_VIRTUAL_AB_DEVICE=1
