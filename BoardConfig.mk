@@ -71,7 +71,7 @@ TARGET_NO_KERNEL := true
 # TODO: then why exists?
 
 # Vendor_Boot Offsets
-BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2 loglevel=4 initcall_debug=0
+BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2
 BOARD_PAGE_SIZE := 4096
 BOARD_BOOT_HEADER_VERSION := 4
 # TODO: below 2 from LLM >:/
