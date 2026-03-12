@@ -42,8 +42,9 @@ ENABLE_SCHEDBOOST := true
 # Touch Screen Modules
 # ========================================
 
-# TODO: checl/update these
-TW_LOAD_VENDOR_MODULES := "goodix_gt96x_u_mmi.ko goodix_brl_u_mmi.ko touchscreen_u_mmi.ko"
+# TODO: check/update these
+TW_LOAD_VENDOR_MODULES := "chipone_tddi_mmi_v2.ko focaltech_0flash_mmi_v3.ko ilitek_v3_mmi.ko"
+# TW_SCREEN_BLANK_ON_BOOT := true # TODO: guide says so, test
 
 # ========================================
 # Variables (Device-Specific)
@@ -55,7 +56,7 @@ TARGET_BOOTLOADER_BOARD_NAME := bogota
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
-# TODO: add mt6855 file below
+# TODO: fix mt6855 file below
 TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/root/init.recovery.mt6855.rc
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TW_SKIP_ADDITIONAL_FSTAB := true
@@ -183,7 +184,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 1000
 TW_FRAMERATE := 120
-TW_NO_CPU_TEMP := true
+# TW_NO_CPU_TEMP := true # TODO: test
 
 # ========================================
 # TWRP Tools & Features Config
