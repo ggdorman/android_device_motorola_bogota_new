@@ -49,7 +49,8 @@ TARGET_BOOTLOADER_BOARD_NAME := bogota
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
-TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/root/init.recovery.mt6878.rc
+# TODO: add mt6855 file below
+TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/root/init.recovery.mt6855.rc
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TW_SKIP_ADDITIONAL_FSTAB := true
 
@@ -75,19 +76,18 @@ BOARD_PAGE_SIZE := 4096
 BOARD_BOOT_HEADER_VERSION := 4
 # TODO: below 2 from LLM >:/
 BOARD_HEADER_SIZE := 4096
-BOARD_FLASH_BLOCK_SIZE := 4096
+BOARD_FLASH_BLOCK_SIZE := 262144 # could also be 4096 or 131072 according to LLM XD but twrpdtgen says otherwise
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
 BOARD_PREBUILT_BOOTIMAGE := $(DEVICE_PATH)/prebuilt/boot.img
 BOARD_DTB_SIZE := $(stat -L -c %s $(TARGET_PREBUILT_DTB))
-# TODO: update below
-BOARD_DTB_OFFSET := 0x07c88000
+# TODO: LLM value below
+BOARD_DTB_OFFSET := 0x07C80000 # vienna=0x47c80000
+# TODO: below mix of LLM + vendor_boot.img values
 BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_RAMDISK_OFFSET := 0x66f00000
 BOARD_TAGS_OFFSET := 0x47c80000
-BOARD_KERNEL_BASE := 0x3fff8000
-BOARD_FLASH_BLOCK_SIZE := 262144
+BOARD_KERNEL_BASE := 0x40000000
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
-BOARD_DTB_SIZE := $(stat -L -c %s $(TARGET_PREBUILT_DTB))
 
 # Offsets implementation in new vendor_boot recovery image
 BOARD_MKBOOTIMG_ARGS += \
@@ -205,7 +205,6 @@ TW_INPUT_BLACKLIST := "hbtp_vm"
 # TODO: then why include?
 # Not needed
 TW_EXCLUDE_APEX := true
-
 TW_EXCLUDE_TWRPAPP := true
 
 # Set recovery theme for mobile
