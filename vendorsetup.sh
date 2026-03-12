@@ -41,16 +41,17 @@ export OF_FORCE_DATA_FORMAT_F2FS=1
 export OF_ENABLE_FRP_ADDON=1
 
 # Set to the maintainer's name
-export OF_MAINTAINER=cloud
+export OF_MAINTAINER=ggdorman
 
 # Use this to change the default time zone
-export OF_DEFAULT_TIMEZONE=IST-5:30
+export OF_DEFAULT_TIMEZONE=CEST
 
 # Device specific
 export OF_SCREEN_H=2400
 
 # Round corners
-export OF_STATUS_INDENT_LEFT=52
+export OF_STATUS_H=122
+export OF_STATUS_INDENT_LEFT=48 # vienna 52
 export OF_STATUS_INDENT_RIGHT=48
 
 # Skip /data, internal storage decryption

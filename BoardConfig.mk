@@ -44,7 +44,6 @@ ENABLE_SCHEDBOOST := true
 
 # TODO: check/update these
 TW_LOAD_VENDOR_MODULES := "chipone_tddi_mmi_v2.ko focaltech_0flash_mmi_v3.ko ilitek_v3_mmi.ko"
-# TW_SCREEN_BLANK_ON_BOOT := true # TODO: guide says so, test
 
 # ========================================
 # Variables (Device-Specific)
@@ -182,7 +181,7 @@ BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 1
 # ========================================
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TW_MAX_BRIGHTNESS := 2047
-TW_DEFAULT_BRIGHTNESS := 1000
+TW_DEFAULT_BRIGHTNESS := 1400
 TW_FRAMERATE := 120
 # TW_NO_CPU_TEMP := true # TODO: test
 
@@ -199,11 +198,11 @@ TW_HAS_MTP := true
 TW_USB_STORAGE := true
 
 # Custom battery path
-# TODO: old path below
-#TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/smart_battery/power_supply/battery/capacity"
-TW_CUSTOM_BATTERY_PATH := "/sys/class/power_supply/battery/capacity" # TODO: likely unnecessary (should be default path)
+TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/smart_battery/power_supply/battery/capacity" # vienna path
+#TW_CUSTOM_BATTERY_PATH := "/sys/class/power_supply/battery/capacity" # likely unnecessary (should be default path), doesn't work...
+# TW_NO_BATT_PERCENT := true # if it ends up not working
 
-# TODO: this is fingerprint blacklist
+# Blacklist fingerprint sensor
 TW_INPUT_BLACKLIST := "hbtp_vm"
 
 # TODO: then why include?

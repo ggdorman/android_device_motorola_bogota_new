@@ -20,8 +20,7 @@ BOARD_SYSTEMSDK_VERSIONS := 34
 PRODUCT_PLATFORM := mt6855
 
 #PRODUCT_BOARD := mgvi_64_ww_armv82
-PRODUCT_BOARD := bogota
-# TODO: correct?
+PRODUCT_BOARD := bogota # TODO: correct?
 
 # ========================================
 # OTA updates config
