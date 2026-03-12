@@ -39,11 +39,15 @@ ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
 # ========================================
-# Touch Screen Modules
+# Touch Screen and Other Modules
 # ========================================
 
 # TODO: Many devices have these drivers, when the touchscreen driver is located directly in the kernel. So there is no need to add.
-TW_LOAD_VENDOR_MODULES := "chipone_tddi_mmi_v2.ko focaltech_0flash_mmi_v3.ko ilitek_v3_mmi.ko"
+# Removed: focaltech_0flash_mmi_v3.ko ilitek_v3_mmi.ko
+TW_LOAD_VENDOR_MODULES := "chipone_tddi_mmi_v2.ko hf_manager.ko flashlight.ko flashlights-bogota-aw36515.ko flashlights-ocp81375.ko mtk-sp-spk-amp.ko leds-gpio.ko mt6855-mt6369.ko qpnp_adaptive_charge.ko ccci_auxadc.ko"
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "android.hardware.vibrator@2::IVibrator/default"
 
 # ========================================
 # Variables (Device-Specific)
