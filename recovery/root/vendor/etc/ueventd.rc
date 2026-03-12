@@ -20,20 +20,15 @@
 /dev/block/by-name/nvram     0660    root    system
 /dev/block/by-name/para      0660    root    system
 /dev/block/by-name/logo      0660    root    system
-/dev/block/by-name/logo_a      0660    root    system
-/dev/block/by-name/logo_b      0660    root    system
 /dev/block/by-name/frp       0660    root    system
 /dev/block/by-name/md1img    0640    root    system
 /dev/block/by-name/md1img_a  0640    root    system
 /dev/block/by-name/md1img_b  0640    root    system
-/dev/block/by-name/modem    0640    root    system
-/dev/block/by-name/modem_a  0640    root    system
-/dev/block/by-name/modem_b  0640    root    system
 /dev/block/by-name/md1dsp    0660    root    system
 /dev/block/by-name/boot_para 0640    root    system
 
 # Add device block for MISC
-/dev/block/by-name/misc      0660    root    system
+/dev/block/by-name/misc      0660   root     system
 
 # OTP
 /dev/otp                  0660   system     system
@@ -43,58 +38,32 @@
 /dev/stpwmt               0660   system     system
 /dev/wmtdetect            0660   system     system
 /dev/fw_log_wmt           0660   system     system
-/dev/fw_log_wifimcu       0660   system     system
-/dev/fw_log_btmcu         0660   system     system
-/dev/fw_log_gpsmcu        0660   system     system
 /dev/conninfra_dev        0660   system     system
-/dev/conn_scp             0660   system     system
 /dev/conn_pwr_dev         0660   system     system
-/dev/aol_flp              0660   system     system
-/dev/aol_geofence         0660   system     system
 
 # BT
 /dev/stpbt                0660   bluetooth  bluetooth
 /dev/fw_log_bt            0660   bluetooth  bluetooth
 
 # GPS
-/dev/gpsdl0               0600   gps        gps
-/dev/gpsdl1               0600   gps        gps
-/dev/stpgps               0600   gps        gps
-/dev/gps                  0600   gps        system
-/dev/gps_emi              0600   gps        gps
-/dev/gps2scp              0600   gps        gps
-/dev/gps_pwr              0600   gps        gps
-/dev/gpsmdl-agent         0600   gps        gps
-/dev/gpsmdl-corr          0600   gps        gps
-/dev/gpsmdl-dsp0          0600   gps        gps
-/dev/gpsmdl-dsp1          0600   gps        gps
-/dev/gpsmdl-gdlog         0600   gps        gps
-/dev/gpsmdl-mpelog        0600   gps        gps
-/dev/gpsmdl-mcufn         0600   gps        gps
-/dev/gpsmdl-mcusys        0600   gps        gps
-/dev/gpsmdl-meas          0600   gps        gps
-/dev/gpsmdl-mnl           0600   gps        gps
-/dev/gpsmdl-nmea          0600   gps        gps
-/dev/gpsmdl-pmtk          0600   gps        gps
-/dev/gpsstrg*             0600   gps        gps
-/dev/gps2scp              0600   gps        gps
-/dev/gpsmdl-lppm          0600   gps        gps
+/dev/gpsdl0               0660   gps        gps
+/dev/gpsdl1               0660   gps        gps
+/dev/stpgps               0660   gps        gps
+/dev/stpgps2              0660   gps        gps
+/dev/gps                  0660   gps        system
+/dev/gps_emi              0660   gps        gps
+/dev/gps2scp              0660   gps        gps
+/dev/gps_pwr              0660   gps        gps
 /dev/fw_log_gps           0660   gps        gps
-
 # ANT
 /dev/stpant               0660   system     system
 
 # WIFI
 /dev/wmtWifi              0660   wifi     wifi
 /dev/fw_log_wifi          0660   wifi     wifi
-/dev/fw_log_ics           0660   wifi     wifi
-/dev/coredump_wifi        0440   system   system
 
 # FMRadio
 /dev/fm                   0660   media     media
-
-# ConnFem
-/dev/connfem              0660   system     system
 
 # NFC
 /dev/st21nfc              0660   nfc        radio
@@ -112,11 +81,11 @@
 
 # TrustonicTEE driver
 /dev/mobicore             0600   system     system
-/dev/mobicore-user        0660   system     system
-/dev/t-base-tui           0660   system     system
+/dev/mobicore-user        0666   system     system
+/dev/t-base-tui           0666   system     system
 
 # teeperf driver
-/dev/teeperf              0660   system     system
+/dev/teeperf              0666   system     system
 
 #v4l2 device
 /dev/video*      0660 camera system
@@ -126,25 +95,18 @@
 #v4l2 codec
 /dev/vcu    0660 camera system
 
-#fmt mode
-/dev/vdec-fmt    0660 media system
-/dev/fmt_sync    0660 system system
+#vdec-fmt
+/dev/vdec-fmt   0660 media system
+/dev/fmt_sync   0660 system system
 
 #v4l2 camera
 /dev/mtk_hcp     0660 camera system
-
-#aov camera
-/dev/mtk_aov     0660 camera system
 
 # DRM node
 /dev/dri/card0            0660   system     system
 
 # MDDP node
-/dev/mddp                 0640   system     system
-
-# cpu hotplug
-/sys/devices/system/cpu/cpu* cpufreq/sugov_ext/down_rate_limit_us 0664 system system
-/sys/devices/system/cpu/cpu* cpufreq/sugov_ext/up_rate_limit_us 0664 system system
+/dev/mddp                 0660   system     system
 
 # add the read write right of ttyUSB*
 /dev/bus/usb/*     	  0660   root       usb
@@ -175,6 +137,7 @@
 /dev/ccci3_raw_audio            0660   audio      audio
 /dev/eemcs_aud            0660   audio      audio
 /dev/irtx                 0660   system     system
+/dev/lirc*                0660   root       system
 /dev/ir-learning          0660   system     system
 # SGX device node
 /dev/pvrsrvkm             0666   root       root
@@ -199,7 +162,7 @@
 /dev/ttyRB*               0660   radio      radio
 
 # Mali node
-/dev/mali0                0666   system     graphics
+/dev/mali                 0666   system     graphics
 
 # Change ION driver permission
 /dev/ion                  0666   system     graphics
@@ -207,8 +170,8 @@
 # Change DMA_HEAP deice permission
 #     refs: /system/core/rootdir/uevent.rc
 #           /dev/dma_heap/system      0444   system     system
-/dev/dma_heap/mtk_mm                        0444   system     system
-/dev/dma_heap/mtk_mm-uncached               0444   system     system
+/dev/dma_heap/mtk_mm                                0444   system     system
+/dev/dma_heap/mtk_mm-uncached                       0444   system     system
 /dev/dma_heap/mtk_svp_page-uncached                 0444   system     system
 /dev/dma_heap/mtk_prot_page-uncached                0444   system     system
 /dev/dma_heap/mtk_svp_region                        0444   system     system
@@ -220,11 +183,6 @@
 /dev/dma_heap/mtk_wfd_region                        0444   system     system
 /dev/dma_heap/mtk_wfd_region-aligned                0444   system     system
 /dev/dma_heap/mtk_wfd_page-uncached                 0444   system     system
-/dev/dma_heap/mtk_sapu_data_shm_region              0444   system     system
-/dev/dma_heap/mtk_sapu_data_shm_region-aligned      0444   system     system
-/dev/dma_heap/mtk_sapu_engine_shm_region            0444   system     system
-/dev/dma_heap/mtk_sapu_engine_shm_region-aligned    0444   system     system
-/dev/dma_heap/mtk_sapu_page-uncached                0444   system     system
 
 #touch
 /dev/touch                0660   root       system
@@ -237,17 +195,14 @@
 #MTK In-House TEE
 /dev/ttyACM0              0660   radio      radio
 
-#CCU
-/dev/ccu*      0660 system camera
+#  chipone  fingerprint
+/dev/fpsensor  0660    system     system
 
-#hbt
-/dev/hbt       0600 root   root
+#  egis  fingerprint
+/dev/esfp0  0660    system     system
 
-#aac richtap
-/dev/aw_haptic         0660    system    system
-
-#sensor
-/dev/hf_manager        0660    system    system
+# goodix fingerprint
+/dev/goodix_fp  0660    system     system
 
 # set permission for fpc  fingerprint
 /sys/class/fingerprint/fpc_spi   wakeup_enable   0660     system    system
@@ -259,11 +214,7 @@
 /sys/class/fingerprint/fpc_spi   vendor          0660     system    system
 /sys/class/fingerprint/fpc_spi   modalias        0660     system    system
 
-# EgisTech fingerprint device
-/dev/esfp0                0660   system     system
 
-# Anc fingerprint device
-/dev/jiiov_fp             0660   system     system
-
-#dynamic sensor
-/dev/hidraw*   0660 system system
+# change permission for some capsensor nodes
+/sys/class/sensors/Moto\ CapSense\ Ch*   enable       0660    root    input
+/sys/class/sensors/Moto\ CapSense\ Ch*   poll_delay   0660    root    input
