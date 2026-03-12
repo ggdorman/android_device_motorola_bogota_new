@@ -1,4 +1,4 @@
-# OrangeFox (TWRP) device tree for Motorola Moto G56 5G (bogota)
+# (WIP) OrangeFox (TWRP) device tree for Motorola Moto G56 5G (bogota)
 
 Officially released on May 29 2025
 
@@ -52,13 +52,13 @@ Blocking checks
 
 Medium checks
 - [✔] update.zip sideload
-- [✔] UI colors (red/blue inversions)
+- [✖] UI colors (red/blue inversions)
 - [✔] Screen goes off and on
-- [✔] F2FS/EXT4 Support, exFAT/NTFS where supported
-- [✔] all important partitions listed in mount/backup lists
+- [✖] F2FS/EXT4 Support, exFAT/NTFS where supported
+- [✖] all important partitions listed in mount/backup lists
 - [✖] backup/restore to/from external (USB-OTG) storage
-- [✔] decrypt /data
-- [✖] Correct date
+- [✖] decrypt /data
+- [✔] Correct date
 - [✖] USB-OTG (flash drive)
 
 Minor checks
@@ -66,7 +66,7 @@ Minor checks
 - [✔] reboot to bootloader
 - [✔] reboot to recovery
 - [✔] poweroff
-- [✔] battery level
+- [✖] battery level
 - [✖] temperature (thermal zone not available during recovery)
 - [✖] encrypted backups
 - [✖] input devices via USB (USB-OTG) - keyboard and mouse
@@ -78,7 +78,7 @@ Minor checks
 - [✔] Fastbootd
 
 ## To Build with OrangeFox manifest
-**Clone manifest ofrp-12.1**
+**Clone manifest ofrp-14.1**
 ```bash
 sudo apt install git
 sudo apt install repo
@@ -88,44 +88,44 @@ cd scripts
 sudo bash setup/android_build_env.sh
 sudo bash setup/install_android_sdk.sh
 ```
-**Sync manifest ofrp-12.1**
+**Sync manifest ofrp-14.1**
 ```bash
 mkdir ~/OrangeFox_sync
 cd ~/OrangeFox_sync
 git clone https://gitlab.com/OrangeFox/sync.git
 cd ~/OrangeFox_sync/sync/
-./orangefox_sync.sh --branch 12.1 --path ~/fox_12.1
+./orangefox_sync.sh --branch 14.1 --path ~/fox_14.1
 ```
 **Cloning the device tree**
 ```bash
-cd ~/fox_12.1
-git clone https://github.com/DeviceTree/android_device_motorola_bogota.git -b twrp-12.1 device/motorola/bogota
+cd ~/fox_14.1
+git clone https://github.com/ggdorman/android_device_motorola_bogota_new.git -b twrp-14.1 device/motorola/bogota
 ```
 **Build**
 ```bash
 build/envsetup.sh; lunch twrp_bogota-eng && mka adbd vendorbootimage
 ```
-## To Build with TeamWin manifest (Not Reccomended/Broken)
-**Clone manifest twrp-12.1**
+## To Build with TeamWin manifest - Not Recommended (Broken)
+**Clone manifest twrp-14.1**
 ```bash
 sudo apt install git
 sudo apt install repo
-mkdir ~/twrp_12.1
-cd ~/twrp_12.1
-repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp -b twrp-12.1
+mkdir ~/twrp_14.1
+cd ~/twrp_14.1
+repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp -b twrp-14.1
 ```
-**Sync manifest twrp-12.1**
+**Sync manifest twrp-14.1**
 ```bash
 repo sync
 ```
 **Cloning the device tree**
 ```bash
-cd ~/twrp_12.1
-git clone https://github.com/DeviceTree/android_device_motorola_bogota.git -b twrp-12.1 device/motorola/bogota
+cd ~/twrp_14.1
+git clone https://github.com/ggdorman/android_device_motorola_bogota_new.git -b twrp-14.1 device/motorola/bogota
 ```
 **Build**
 ```bash
-export ALLOW_MISSING_DEPENDENCIES=true; . build/envsetup.sh; lunch twrp_bogota-eng
+export ALLOW_MISSING_DEPENDENCIES=true; . build/envsetup.sh; lunch twrp_bogota-ap2a-eng
 mka vendorbootimage
 ```
 ## Common Fixes

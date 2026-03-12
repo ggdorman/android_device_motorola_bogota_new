@@ -42,7 +42,7 @@ ENABLE_SCHEDBOOST := true
 # Touch Screen Modules
 # ========================================
 
-# TODO: check/update these
+# TODO: Many devices have these drivers, when the touchscreen driver is located directly in the kernel. So there is no need to add.
 TW_LOAD_VENDOR_MODULES := "chipone_tddi_mmi_v2.ko focaltech_0flash_mmi_v3.ko ilitek_v3_mmi.ko"
 
 # ========================================
