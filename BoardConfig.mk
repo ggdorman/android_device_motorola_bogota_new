@@ -11,7 +11,10 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 # ========================================
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
+# TODO: Or this because device is 8.2a?
+#TARGET_ARCH_VARIANT := armv8-2a
 TARGET_CPU_ABI := arm64-v8a
+# why variant generic then runtime is cortex?
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a55
 TARGET_KERNEL_ARCH := $(TARGET_ARCH)
@@ -26,6 +29,10 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a55
 TARGET_BOARD_SUFFIX := _64
+
+# TODO: Extras from guide - likely not needed?
+TARGET_SUPPORTS_64_BIT_APPS := true
+TARGET_IS_64_BIT := true
 
 # CPU boost
 ENABLE_CPUSETS := true
@@ -43,9 +50,9 @@ TW_LOAD_VENDOR_MODULES := "goodix_gt96x_u_mmi.ko goodix_brl_u_mmi.ko touchscreen
 # ========================================
 TARGET_OTA_ASSERT_DEVICE := bogota
 TARGET_BOARD_PLATFORM := mt6855
-# TODO: needs checking
-# TARGET_BOOTLOADER_BOARD_NAME := mgvi_64_ww_armv82
-TARGET_BOOTLOADER_BOARD_NAME := bogota
+# TODO: should be good (prop.default ro.vendor.mgvi_name)
+TARGET_BOOTLOADER_BOARD_NAME := mgvi_64_ww_armv82
+# TARGET_BOOTLOADER_BOARD_NAME := bogota
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
@@ -126,7 +133,6 @@ PRODUCT_FULL_TREBLE := true
 # Partitions Config
 # ========================================
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
-# TODO: LLM says fale/omit below
 BOARD_USES_VENDOR_DLKMIMAGE := true
 #TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
