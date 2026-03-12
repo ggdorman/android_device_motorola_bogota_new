@@ -37,8 +37,6 @@ subsystem dma_heap
 /dev/tty                  0666   root       root
 /dev/random               0666   root       root
 /dev/urandom              0666   root       root
-# Aside from kernel threads, only prng_seeder needs access to HW RNG
-/dev/hw_random            0400   prng_seeder prng_seeder
 /dev/ashmem*              0666   root       root
 /dev/binder               0666   root       root
 /dev/hwbinder             0666   root       root
@@ -72,8 +70,9 @@ subsystem dma_heap
 # CDMA radio interface MUX
 /dev/ppp                  0660   radio      vpn
 
-/dev/kvm                  0666   root       root
-/dev/vhost-vsock          0666   root       root
+# Virtualisation is managed by Virt Manager
+/dev/kvm                  0600   virtmanager root
+/dev/vhost-vsock          0600   virtmanager root
 
 # sysfs properties
 /sys/devices/platform/trusty.*      trusty_version        0440  root   log
