@@ -50,9 +50,8 @@ TW_LOAD_VENDOR_MODULES := "goodix_gt96x_u_mmi.ko goodix_brl_u_mmi.ko touchscreen
 # ========================================
 TARGET_OTA_ASSERT_DEVICE := bogota
 TARGET_BOARD_PLATFORM := mt6855
-# TODO: should be good (prop.default ro.vendor.mgvi_name)
-TARGET_BOOTLOADER_BOARD_NAME := mgvi_64_ww_armv82
-# TARGET_BOOTLOADER_BOARD_NAME := bogota
+# TODO: should be good (otherwise prop.default ro.vendor.mgvi_name= mgvi_64_ww_armv82)
+TARGET_BOOTLOADER_BOARD_NAME := bogota
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
@@ -66,6 +65,7 @@ TW_SKIP_ADDITIONAL_FSTAB := true
 # ========================================
 BOARD_HAS_MTK_HARDWARE := true
 BOARD_USES_MTK_HARDWARE := true
+MTK_HARDWARE := true # from guide, redundant?
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 
 # ========================================
@@ -78,23 +78,22 @@ TARGET_NO_KERNEL := true
 # TODO: then why exists?
 
 # Vendor_Boot Offsets
-BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2
-BOARD_PAGE_SIZE := 4096
-BOARD_BOOT_HEADER_VERSION := 4
-# TODO: below 2 from LLM >:/
-BOARD_HEADER_SIZE := 4096
-BOARD_FLASH_BLOCK_SIZE := 262144 # could also be 4096 or 131072 according to LLM XD but twrpdtgen says otherwise
+BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2 # actual 'bootopt=64S3,32N2,64N2 loglevel=4 initcall_debug=0' fails to build
+BOARD_PAGE_SIZE := 4096 # good
+# BOARD_KERNEL_PAGESIZE := 4096 # NEW flag from twrpdtgen, needs checking
+BOARD_BOOT_HEADER_VERSION := 4 # good
+BOARD_HEADER_SIZE := 2128 # good
+BOARD_FLASH_BLOCK_SIZE := 262144 # good (twrpdtgen)
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
 BOARD_PREBUILT_BOOTIMAGE := $(DEVICE_PATH)/prebuilt/boot.img
 BOARD_DTB_SIZE := $(stat -L -c %s $(TARGET_PREBUILT_DTB))
-# TODO: LLM value below
-BOARD_DTB_OFFSET := 0x07C80000 # vienna=0x47c80000
-# TODO: below mix of LLM + vendor_boot.img values
-BOARD_KERNEL_OFFSET := 0x00008000
-BOARD_RAMDISK_OFFSET := 0x66f00000
-BOARD_TAGS_OFFSET := 0x47c80000
-BOARD_KERNEL_BASE := 0x40000000
-BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_DTB_OFFSET := 0x07c88000 # good
+BOARD_KERNEL_OFFSET := 0x00008000 # good
+BOARD_RAMDISK_OFFSET := 0x26f08000 # good
+BOARD_TAGS_OFFSET := 0x07c88000 # good
+BOARD_KERNEL_BASE := 0x3fff8000 # # not output by unpackbootimg, twrpdtgen value, LLM value = 0x40000000
+BOARD_VENDOR_BASE := 0x3fff8000 # good BUT NEW flag, needs checking
+BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864 # good
 
 # Offsets implementation in new vendor_boot recovery image
 BOARD_MKBOOTIMG_ARGS += \
@@ -139,6 +138,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # Metadata partition support
 BOARD_USES_METADATA_PARTITION := true
+# BOARD_ROOT_EXTRA_FOLDERS += metadata # TODO: from guide, not included in vienna
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 
@@ -154,8 +154,7 @@ TW_INCLUDE_CRYPTO := $(INCLUDE_CRYPTO)
 TW_INCLUDE_CRYPTO_FBE := $(INCLUDE_CRYPTO)
 TW_INCLUDE_FBE := $(INCLUDE_CRYPTO)
 TW_INCLUDE_FBE_METADATA_DECRYPT := $(INCLUDE_CRYPTO)
-# TODO: vienna=2, bogota old tree is 1
-TW_USE_FSCRYPT_POLICY := 1
+TW_USE_FSCRYPT_POLICY := 2 # good
 RECOVERY_SDCARD_ON_DATA := true
 
 # ========================================
@@ -172,8 +171,7 @@ PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 # ========================================
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
-# TODO: update below key
-BOARD_AVB_VENDOR_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_VENDOR_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem # TODO: update key?
 BOARD_AVB_VENDOR_BOOT_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX := 1
 BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 1
@@ -183,7 +181,7 @@ BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 1
 # ========================================
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TW_MAX_BRIGHTNESS := 2047
-TW_DEFAULT_BRIGHTNESS := 800
+TW_DEFAULT_BRIGHTNESS := 1000
 TW_FRAMERATE := 120
 TW_NO_CPU_TEMP := true
 
@@ -202,10 +200,9 @@ TW_USB_STORAGE := true
 # Custom battery path
 # TODO: old path below
 #TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/smart_battery/power_supply/battery/capacity"
-TW_CUSTOM_BATTERY_PATH := "/sys/class/power_supply/battery/capacity"
-# TODO: likely unnecessary (should be default path)
+TW_CUSTOM_BATTERY_PATH := "/sys/class/power_supply/battery/capacity" # TODO: likely unnecessary (should be default path)
 
-# TODO: this is fingerpring blacklist
+# TODO: this is fingerprint blacklist
 TW_INPUT_BLACKLIST := "hbtp_vm"
 
 # TODO: then why include?
