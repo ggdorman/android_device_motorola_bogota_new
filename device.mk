@@ -11,13 +11,16 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 ENABLE_VIRTUAL_AB := true
 
 # Device software versions at launch
-PRODUCT_TARGET_VNDK_VERSION := 34
-BOARD_SHIPPING_API_LEVEL := 34
-PRODUCT_SHIPPING_API_LEVEL := 34
+PRODUCT_TARGET_VNDK_VERSION := 35
+BOARD_SHIPPING_API_LEVEL := 35
+PRODUCT_SHIPPING_API_LEVEL := 35
 
 # Device-specific variables
-PRODUCT_PLATFORM := mt6878
-PRODUCT_BOARD := mgvi_64_ww_armv82
+PRODUCT_PLATFORM := mt6855
+
+#PRODUCT_BOARD := mgvi_64_ww_armv82
+PRODUCT_BOARD := bogota
+# TODO: correct?
 
 # ========================================
 # OTA updates config
@@ -65,8 +68,9 @@ PRODUCT_PACKAGES += \
 
 # Bootctrl HAL
 PRODUCT_PACKAGES += \
-    bootctrl.mt6878 \
-    bootctrl.mt6878.recovery
+    bootctrl.mt6855 \
+    bootctrl.mt6855.recovery
+# TODO: add above files??
 
 # ========================================
 # Decryption HAL(s)

@@ -1,5 +1,5 @@
 ro.postinstall.fstab.prefix=/system
-ro.vendor.mediatek.platform=MT6878
+ro.vendor.mediatek.platform=MT6855
 ro.sys.usb.storage.type=mtp
 vendor.usb.ffs.mtp.ready=1
 vvendor.usb.use_ffs_mtp=1

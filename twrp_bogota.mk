@@ -17,7 +17,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-motorola
 PRODUCT_DEVICE := bogota
 PRODUCT_NAME := twrp_bogota
 PRODUCT_BRAND := motorola
-PRODUCT_MODEL := motorola edge 50 neo
+PRODUCT_MODEL := moto g56 5g
 PRODUCT_MANUFACTURER := motorola
 
 # ========================================

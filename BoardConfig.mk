@@ -18,7 +18,9 @@ TARGET_KERNEL_ARCH := $(TARGET_ARCH)
 TARGET_KERNEL_HEADER_ARCH := $(TARGET_ARCH)
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-2a
+# TODO: Remove old value below?
+# TARGET_2ND_ARCH_VARIANT := armv8-2a
+TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
@@ -32,14 +34,18 @@ ENABLE_SCHEDBOOST := true
 # ========================================
 # Touch Screen Modules
 # ========================================
+
+# TODO: checl/update these
 TW_LOAD_VENDOR_MODULES := "goodix_gt96x_u_mmi.ko goodix_brl_u_mmi.ko touchscreen_u_mmi.ko"
 
 # ========================================
 # Variables (Device-Specific)
 # ========================================
 TARGET_OTA_ASSERT_DEVICE := bogota
-TARGET_BOARD_PLATFORM := mt6878
-TARGET_BOOTLOADER_BOARD_NAME := mgvi_64_ww_armv82
+TARGET_BOARD_PLATFORM := mt6855
+# TODO: needs checking
+# TARGET_BOOTLOADER_BOARD_NAME := mgvi_64_ww_armv82
+TARGET_BOOTLOADER_BOARD_NAME := bogota
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
@@ -61,20 +67,23 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 
 # Not required for recovery as vendor_boot
 TARGET_NO_KERNEL := true
+# TODO: then why exists?
 
 # Vendor_Boot Offsets
-BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2
+BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2 loglevel=4 initcall_debug=0
 BOARD_PAGE_SIZE := 4096
 BOARD_BOOT_HEADER_VERSION := 4
-BOARD_HEADER_SIZE := 2128
-BOARD_FLASH_BLOCK_SIZE := 262144
+# TODO: below 2 from LLM >:/
+BOARD_HEADER_SIZE := 4096
+BOARD_FLASH_BLOCK_SIZE := 4096
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
 BOARD_PREBUILT_BOOTIMAGE := $(DEVICE_PATH)/prebuilt/boot.img
 BOARD_DTB_SIZE := $(stat -L -c %s $(TARGET_PREBUILT_DTB))
+# TODO: update below
 BOARD_DTB_OFFSET := 0x07c88000
 BOARD_KERNEL_OFFSET := 0x00008000
-BOARD_RAMDISK_OFFSET := 0x26f08000
-BOARD_TAGS_OFFSET := 0x07c88000
+BOARD_RAMDISK_OFFSET := 0x66f00000
+BOARD_TAGS_OFFSET := 0x47c80000
 BOARD_KERNEL_BASE := 0x3fff8000
 BOARD_FLASH_BLOCK_SIZE := 262144
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -117,6 +126,7 @@ PRODUCT_FULL_TREBLE := true
 # Partitions Config
 # ========================================
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
+# TODO: LLM says fale/omit below
 BOARD_USES_VENDOR_DLKMIMAGE := true
 #TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -138,7 +148,8 @@ TW_INCLUDE_CRYPTO := $(INCLUDE_CRYPTO)
 TW_INCLUDE_CRYPTO_FBE := $(INCLUDE_CRYPTO)
 TW_INCLUDE_FBE := $(INCLUDE_CRYPTO)
 TW_INCLUDE_FBE_METADATA_DECRYPT := $(INCLUDE_CRYPTO)
-TW_USE_FSCRYPT_POLICY := 2
+# TODO: vienna=2, bogota old tree is 1
+TW_USE_FSCRYPT_POLICY := 1
 RECOVERY_SDCARD_ON_DATA := true
 
 # ========================================
@@ -147,7 +158,7 @@ RECOVERY_SDCARD_ON_DATA := true
 PLATFORM_SECURITY_PATCH := 2099-12-31
 BOOT_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
-PLATFORM_VERSION := 99.87.36
+PLATFORM_VERSION := 16.1.0
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 
 # ========================================
@@ -155,6 +166,7 @@ PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 # ========================================
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
+# TODO: update below key
 BOARD_AVB_VENDOR_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_VENDOR_BOOT_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX := 1
@@ -164,8 +176,8 @@ BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 1
 # Display / UI
 # ========================================
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
-TW_MAX_BRIGHTNESS := 3075
-TW_DEFAULT_BRIGHTNESS := 1020
+TW_MAX_BRIGHTNESS := 2047
+TW_DEFAULT_BRIGHTNESS := 800
 TW_FRAMERATE := 120
 TW_NO_CPU_TEMP := true
 
@@ -182,10 +194,19 @@ TW_HAS_MTP := true
 TW_USB_STORAGE := true
 
 # Custom battery path
-TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/smart_battery/power_supply/battery/capacity"
+# TODO: old path below
+#TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/smart_battery/power_supply/battery/capacity"
+TW_CUSTOM_BATTERY_PATH := "/sys/class/power_supply/battery/capacity"
+# TODO: likely unnecessary (should be default path)
 
+# TODO: this is fingerpring blacklist
+TW_INPUT_BLACKLIST := "hbtp_vm"
+
+# TODO: then why include?
 # Not needed
 TW_EXCLUDE_APEX := true
+
+TW_EXCLUDE_TWRPAPP := true
 
 # Set recovery theme for mobile
 TW_THEME := portrait_hdpi
@@ -194,7 +215,7 @@ TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
 
 # Custom device version
-TW_DEVICE_VERSION := v0.1.0 | cloud
+TW_DEVICE_VERSION := v0.1.0 | ggdorman
 
 # Toybox instead of Busybox
 TW_USE_TOOLBOX := true
