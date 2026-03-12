@@ -1,38 +1,30 @@
-# 1 "vendor/mediatek/proprietary/hardware/fstab/mt6878/fstab.in.mt6878"
+# 1 "vendor/mediatek/proprietary/hardware/fstab/mt6855/fstab.in.mt6855"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
-# 374 "<built-in>" 3
+# 341 "<built-in>" 3
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
-# 1 "vendor/mediatek/proprietary/hardware/fstab/mt6878/fstab.in.mt6878" 2
-# 144 "vendor/mediatek/proprietary/hardware/fstab/mt6878/fstab.in.mt6878"
+# 1 "vendor/mediatek/proprietary/hardware/fstab/mt6855/fstab.in.mt6855" 2
+# 172 "vendor/mediatek/proprietary/hardware/fstab/mt6855/fstab.in.mt6855"
 system /system erofs ro wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+
 system /system ext4 ro wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
-system_ext /system_ext erofs ro wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
-system_ext /system_ext ext4 ro wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+
+system_ext /system_ext erofs ro wait,slotselect,avb=vbmeta_system,logical,first_stage_mount
 
 vendor /vendor erofs ro wait,slotselect,avb,logical,first_stage_mount
-vendor /vendor ext4 ro wait,slotselect,avb,logical,first_stage_mount
 
 
 product /product erofs ro wait,slotselect,avb,logical,first_stage_mount
-product /product ext4 ro wait,slotselect,avb,logical,first_stage_mount
-
 
 
 
 
 
 vendor_dlkm /vendor_dlkm erofs ro wait,slotselect,avb,logical,first_stage_mount
-vendor_dlkm /vendor_dlkm ext4 ro wait,slotselect,avb,logical,first_stage_mount
 
 
 
-
-
-
-system_dlkm /system_dlkm erofs ro wait,slotselect,avb,logical,first_stage_mount
-system_dlkm /system_dlkm ext4 ro wait,slotselect,avb,logical,first_stage_mount
 
 
 /dev/block/by-name/metadata /metadata f2fs noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
@@ -49,12 +41,22 @@ system_dlkm /system_dlkm ext4 ro wait,slotselect,avb,logical,first_stage_mount
 
 /dev/block/by-name/persist /mnt/vendor/persist ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
 /dev/block/by-name/prodpersist /mnt/product/persist ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-# 198 "vendor/mediatek/proprietary/hardware/fstab/mt6878/fstab.in.mt6878"
+
+
+
+/dev/block/by-name/logks /mnt/product/logks ext4 noatime,nosuid,nodev wait,formattable,nofail,first_stage_mount
+
+
+
 /dev/block/by-name/tzapp_a /mnt/vendor/tzapp ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-# 209 "vendor/mediatek/proprietary/hardware/fstab/mt6878/fstab.in.mt6878"
-/devices/platform/usb_xhci* auto vfat defaults voldmanaged=usbotg:auto
-/devices/platform/soc/11201000.usb0/11200000.xhci* auto vfat defaults voldmanaged=usbotg:auto
-/devices/platform/soc/11211000.usb1/11210000.xhci* auto vfat defaults voldmanaged=usbotg:auto
+
+
+
+
+
+/devices/platform/soc/11240000.mmc* auto auto defaults voldmanaged=sdcard1:auto
+
+/devices/platform/soc/mt_usb* auto vfat defaults voldmanaged=usbotg:auto
 
 /dev/block/by-name/frp /persistent emmc defaults defaults
 
@@ -64,13 +66,16 @@ system_dlkm /system_dlkm ext4 ro wait,slotselect,avb,logical,first_stage_mount
 /dev/block/by-name/bootloader2 /bootloader2 emmc defaults defaults
 /dev/block/by-name/para /para emmc defaults defaults
 /dev/block/by-name/misc /misc emmc defaults defaults
-/dev/block/by-name/init_boot /init_boot emmc defaults defaults
 
 
 
 
 /dev/block/by-name/boot /boot emmc defaults first_stage_mount,nofail,slotselect
-# 235 "vendor/mediatek/proprietary/hardware/fstab/mt6878/fstab.in.mt6878"
+
+
+
+
+
 /dev/block/by-name/vbmeta_system /vbmeta_system emmc defaults first_stage_mount,nofail,slotselect,avb=vbmeta
 
 /dev/block/by-name/logo /logo emmc defaults defaults
@@ -97,7 +102,7 @@ system_dlkm /system_dlkm ext4 ro wait,slotselect,avb,logical,first_stage_mount
 
 
 
-/dev/block/by-name/modem /modem emmc defaults defaults
+/dev/block/by-name/md1img /md1img emmc defaults defaults
 /dev/block/by-name/md1dsp /md1dsp emmc defaults defaults
 /dev/block/by-name/md1arm7 /md1arm7 emmc defaults defaults
 /dev/block/by-name/md3img /md3img emmc defaults defaults
@@ -130,8 +135,6 @@ system_dlkm /system_dlkm ext4 ro wait,slotselect,avb,logical,first_stage_mount
 /dev/block/by-name/boot_para /boot_para emmc defaults defaults
 /dev/block/by-name/odmdtbo /odmdtbo emmc defaults defaults
 /dev/block/by-name/dtbo /dtbo emmc defaults defaults
-/dev/block/by-name/connsys_wifi /connsys_wifi emmc defaults defaults
-/dev/block/by-name/connsys_bt /connsys_bt emmc defaults defaults
 
 /dev/block/by-name/otp /otp emmc defaults defaults
 
