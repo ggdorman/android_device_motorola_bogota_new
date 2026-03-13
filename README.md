@@ -22,7 +22,7 @@ Officially released on May 29 2025
 | Chipset                      | Mediatek Dimensity 7060 (MT6855)                                              |
 | CPU                          | Octa-core (2x2.6 GHz Cortex-A78 & 6x2.0 GHz Cortex-A55)                       |
 | GPU                          | IMG BXM-8-256                                                                 |
-| Memory                       | 4/8/12 GB RAM                                                                 |
+| Memory                       | 4/8/12 GB RAM (LPDDR4X/5)                                                     |
 | Shipped OS                   | Android 15                                                                    |
 | Storage                      | 128/256/512 GB (UFS 2.1)                                                      |
 | SIM                          | dual Nano-SIM, eSIM                                                           |

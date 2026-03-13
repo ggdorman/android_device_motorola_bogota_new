@@ -79,7 +79,7 @@ TARGET_NO_KERNEL := true
 # TODO: then why exists?
 
 # Vendor_Boot Offsets
-BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2 # actual 'bootopt=64S3,32N2,64N2 loglevel=4 initcall_debug=0' fails to build
+BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2 #good
 BOARD_PAGE_SIZE := 4096 # good
 # BOARD_KERNEL_PAGESIZE := 4096 # NEW flag from twrpdtgen, needs checking
 BOARD_BOOT_HEADER_VERSION := 4 # good
