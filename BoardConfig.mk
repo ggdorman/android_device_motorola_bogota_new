@@ -79,22 +79,39 @@ TARGET_NO_KERNEL := true
 # TODO: then why exists?
 
 # Vendor_Boot Offsets
-BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2 #good
-BOARD_PAGE_SIZE := 4096 # good
-# BOARD_KERNEL_PAGESIZE := 4096 # NEW flag from twrpdtgen, needs checking
-BOARD_BOOT_HEADER_VERSION := 4 # good
-BOARD_HEADER_SIZE := 2128 # good
-BOARD_FLASH_BLOCK_SIZE := 262144 # good (twrpdtgen)
+#OARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2 #good
+#OARD_PAGE_SIZE := 4096 # good
+## BOARD_KERNEL_PAGESIZE := 4096 # NEW flag from twrpdtgen, needs checking
+#BOARD_BOOT_HEADER_VERSION := 4 # good
+#BOARD_HEADER_SIZE := 2128 # good
+#OARD_FLASH_BLOCK_SIZE := 262144 # good (twrpdtgen)
+#TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
+#BOARD_PREBUILT_BOOTIMAGE := $(DEVICE_PATH)/prebuilt/boot.img
+#BOARD_DTB_SIZE := $(stat -L -c %s $(TARGET_PREBUILT_DTB))
+#BOARD_DTB_OFFSET := 0x07c88000 # good
+#BOARD_KERNEL_OFFSET := 0x00008000 # good
+#BOARD_RAMDISK_OFFSET := 0x26f08000 # good
+#BOARD_TAGS_OFFSET := 0x07c88000 # good
+#BOARD_KERNEL_BASE := 0x3fff8000 # # not output by unpackbootimg, twrpdtgen value, LLM value = 0x40000000
+#BOARD_VENDOR_BASE := 0x3fff8000 # good BUT NEW flag, needs checking
+#BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864 # good
+BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2
+BOARD_PAGE_SIZE := 4096
+BOARD_BOOT_HEADER_VERSION := 4
+# TODO: below 2 from LLM >:/
+BOARD_HEADER_SIZE := 4096
+BOARD_FLASH_BLOCK_SIZE := 262144 # could also be 4096 or 131072 according to LLM XD but twrpdtgen says otherwise
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
 BOARD_PREBUILT_BOOTIMAGE := $(DEVICE_PATH)/prebuilt/boot.img
 BOARD_DTB_SIZE := $(stat -L -c %s $(TARGET_PREBUILT_DTB))
-BOARD_DTB_OFFSET := 0x07c88000 # good
-BOARD_KERNEL_OFFSET := 0x00008000 # good
-BOARD_RAMDISK_OFFSET := 0x26f08000 # good
-BOARD_TAGS_OFFSET := 0x07c88000 # good
-BOARD_KERNEL_BASE := 0x3fff8000 # # not output by unpackbootimg, twrpdtgen value, LLM value = 0x40000000
-BOARD_VENDOR_BASE := 0x3fff8000 # good BUT NEW flag, needs checking
-BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864 # good
+# TODO: LLM value below
+BOARD_DTB_OFFSET := 0x07C80000 # vienna=0x47c80000
+# TODO: below mix of LLM + vendor_boot.img values
+BOARD_KERNEL_OFFSET := 0x00008000
+BOARD_RAMDISK_OFFSET := 0x66f00000
+BOARD_TAGS_OFFSET := 0x47c80000
+BOARD_KERNEL_BASE := 0x40000000
+BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
 
 # Offsets implementation in new vendor_boot recovery image
 BOARD_MKBOOTIMG_ARGS += \
