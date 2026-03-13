@@ -107,4 +107,4 @@ PRODUCT_COPY_FILES += \
 # COPIED FROM GUIDE - UNTESTED
 # Enable project quotas and casefolding for emulated storage without sdcardfs - 
 # SDCard replacement functionality
-$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+# $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk) - caused build failure?

@@ -135,8 +135,8 @@ PRODUCT_FULL_TREBLE := true
 # ========================================
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 BOARD_USES_VENDOR_DLKMIMAGE := true
-BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs # newly added, copied from guide, might not need
-TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm # newly added, copied from guide, might not need
+# BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs # newly added, copied from guide, might not need. caused build failure?
+# TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm # newly added, copied from guide, might not need. caused build failure?
 #TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
