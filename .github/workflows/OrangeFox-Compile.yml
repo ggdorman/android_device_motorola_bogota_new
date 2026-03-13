@@ -29,6 +29,7 @@ on:
         options:
         - dev
         - test
+        - test1
         - stable
       DEVICE_PATH:
         description: 'Specify your Device Path'
