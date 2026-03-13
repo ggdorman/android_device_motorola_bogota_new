@@ -45,9 +45,6 @@ ENABLE_SCHEDBOOST := true
 # TODO: Many devices have these drivers, when the touchscreen driver is located directly in the kernel. So there is no need to add.
 # Removed: focaltech_0flash_mmi_v3.ko ilitek_v3_mmi.ko
 TW_LOAD_VENDOR_MODULES := "chipone_tddi_mmi_v2.ko hf_manager.ko flashlight.ko flashlights-bogota-aw36515.ko flashlights-ocp81375.ko mtk-sp-spk-amp.ko leds-gpio.ko mt6855-mt6369.ko qpnp_adaptive_charge.ko ccci_auxadc.ko"
-TW_SUPPORT_INPUT_AIDL_HAPTICS := true
-TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
-TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "android.hardware.vibrator@2::IVibrator/default"
 
 # ========================================
 # Variables (Device-Specific)
@@ -113,6 +110,7 @@ BOARD_MKBOOTIMG_ARGS += \
 
 # Device does not use recovery image
 TARGET_NO_RECOVERY := true
+TW_HAS_NO_RECOVERY_PARTITION := true # Added from guide. To avoid the error about /boot partition not found. Required on devices without /recovery partition.
 
 # GKI support
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
@@ -137,6 +135,8 @@ PRODUCT_FULL_TREBLE := true
 # ========================================
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 BOARD_USES_VENDOR_DLKMIMAGE := true
+BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs # newly added, copied from guide, might not need
+TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm # newly added, copied from guide, might not need
 #TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
@@ -187,7 +187,6 @@ TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 1400
 TW_FRAMERATE := 120
-# TW_NO_CPU_TEMP := true # TODO: test
 
 # ========================================
 # TWRP Tools & Features Config
@@ -201,10 +200,24 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_HAS_MTP := true
 TW_USB_STORAGE := true
 
+# ========================================
+# TWRP Hardware Sensors
+# ========================================
+
 # Custom battery path
 TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/smart_battery/power_supply/battery/capacity" # vienna path
 #TW_CUSTOM_BATTERY_PATH := "/sys/class/power_supply/battery/capacity" # likely unnecessary (should be default path), doesn't work...
 # TW_NO_BATT_PERCENT := true # if it ends up not working
+
+# TW_NO_CPU_TEMP := true # TODO: test
+TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone0/temp # can also try /sys/class/thermal/thermal_zone1/temp
+
+#TW_NO_HAPTICS := true # to disable haptics
+TW_SUPPORT_INPUT_1_2_HAPTICS := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "android.hardware.vibrator@2::IVibrator/default"
+
 
 # Blacklist fingerprint sensor
 TW_INPUT_BLACKLIST := "hbtp_vm"
