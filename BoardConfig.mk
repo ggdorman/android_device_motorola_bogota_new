@@ -42,9 +42,8 @@ ENABLE_SCHEDBOOST := true
 # Touch Screen Modules
 # ========================================
 
-# TODO: check/update these
+# TODO: Many devices have these drivers, when the touchscreen driver is located directly in the kernel. So there is no need to add.
 TW_LOAD_VENDOR_MODULES := "chipone_tddi_mmi_v2.ko focaltech_0flash_mmi_v3.ko ilitek_v3_mmi.ko"
-# TW_SCREEN_BLANK_ON_BOOT := true # TODO: guide says so, test
 
 # ========================================
 # Variables (Device-Specific)
@@ -180,11 +179,10 @@ BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 1
 # ========================================
 # Display / UI
 # ========================================
-TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888 # BGRA_8888 twrpdtgen = deep fried
 TW_MAX_BRIGHTNESS := 2047
-TW_DEFAULT_BRIGHTNESS := 1000
+TW_DEFAULT_BRIGHTNESS := 1400
 TW_FRAMERATE := 120
-# TW_NO_CPU_TEMP := true # TODO: test
 
 # ========================================
 # TWRP Tools & Features Config
@@ -199,11 +197,20 @@ TW_HAS_MTP := true
 TW_USB_STORAGE := true
 
 # Custom battery path
-# TODO: old path below
-#TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/smart_battery/power_supply/battery/capacity"
-TW_CUSTOM_BATTERY_PATH := "/sys/class/power_supply/battery/capacity" # TODO: likely unnecessary (should be default path)
+#TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/smart_battery/power_supply/battery/capacity" # vienna path
+TW_CUSTOM_BATTERY_PATH := "/sys/class/power_supply/battery/capacity" # likely unnecessary (should be default path), doesn't work...
+# TW_NO_BATT_PERCENT := true # if it ends up not working
 
-# TODO: this is fingerprint blacklist
+# TW_NO_CPU_TEMP := true # TODO: test
+TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone46/temp # can also try /sys/devices/virtual/thermal/thermal_zone0/temp
+
+#TW_NO_HAPTICS := true # to disable haptics
+TW_SUPPORT_INPUT_1_2_HAPTICS := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/default" # could be: android.hardware.vibrator@2::IVibrator/default
+
+# Blacklist fingerprint sensor
 TW_INPUT_BLACKLIST := "hbtp_vm"
 
 # TODO: then why include?
