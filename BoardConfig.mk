@@ -202,7 +202,7 @@ TW_CUSTOM_BATTERY_PATH := "/sys/class/power_supply/battery/capacity" # likely un
 # TW_NO_BATT_PERCENT := true # if it ends up not working
 
 # TW_NO_CPU_TEMP := true # TODO: test
-TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone0/temp # can also try /sys/class/thermal/thermal_zone1/temp
+TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone46/temp # can also try /sys/devices/virtual/thermal/thermal_zone0/temp
 
 #TW_NO_HAPTICS := true # to disable haptics
 TW_SUPPORT_INPUT_1_2_HAPTICS := true
