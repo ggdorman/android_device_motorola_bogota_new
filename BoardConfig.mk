@@ -42,8 +42,9 @@ ENABLE_SCHEDBOOST := true
 # Touch Screen Modules
 # ========================================
 
-# TODO: Many devices have these drivers, when the touchscreen driver is located directly in the kernel. So there is no need to add.
 TW_LOAD_VENDOR_MODULES := "chipone_tddi_mmi_v2.ko focaltech_0flash_mmi_v3.ko ilitek_v3_mmi.ko"
+# EXPERIMEMTAL
+# TW_LOAD_VENDOR_MODULES := "chipone_tddi_mmi_v2.ko hf_manager.ko flashlight.ko flashlights-bogota-aw36515.ko flashlights-ocp81375.ko mtk-sp-spk-amp.ko leds-gpio.ko mt6855-mt6369.ko qpnp_adaptive_charge.ko ccci_auxadc.ko"
 
 # ========================================
 # Variables (Device-Specific)
@@ -195,6 +196,10 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 # MTP support
 TW_HAS_MTP := true
 TW_USB_STORAGE := true
+
+# ========================================
+# TWRP Hardware Sensors
+# ========================================
 
 # Custom battery path
 #TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/smart_battery/power_supply/battery/capacity" # vienna path
