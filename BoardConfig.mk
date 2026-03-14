@@ -10,18 +10,14 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 # Architecture Info
 # ========================================
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
-# TODO: Or this because device is 8.2a?
-#TARGET_ARCH_VARIANT := armv8-2a
+TARGET_ARCH_VARIANT := armv8-a # Or armv8-2a because device is 8.2a?
 TARGET_CPU_ABI := arm64-v8a
-# why variant generic then runtime is cortex?
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a55
 TARGET_KERNEL_ARCH := $(TARGET_ARCH)
 TARGET_KERNEL_HEADER_ARCH := $(TARGET_ARCH)
 
 TARGET_2ND_ARCH := arm
-# TODO: Remove old value below?
 # TARGET_2ND_ARCH_VARIANT := armv8-2a
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
@@ -43,7 +39,7 @@ ENABLE_SCHEDBOOST := true
 # ========================================
 
 TW_LOAD_VENDOR_MODULES := "chipone_tddi_mmi_v2.ko focaltech_0flash_mmi_v3.ko ilitek_v3_mmi.ko"
-# EXPERIMEMTAL
+# EXPERIMEMTAL - Fails to boot after loading modules for a while
 # TW_LOAD_VENDOR_MODULES := "chipone_tddi_mmi_v2.ko hf_manager.ko flashlight.ko flashlights-bogota-aw36515.ko flashlights-ocp81375.ko mtk-sp-spk-amp.ko leds-gpio.ko mt6855-mt6369.ko qpnp_adaptive_charge.ko ccci_auxadc.ko"
 
 # ========================================
@@ -51,12 +47,11 @@ TW_LOAD_VENDOR_MODULES := "chipone_tddi_mmi_v2.ko focaltech_0flash_mmi_v3.ko ili
 # ========================================
 TARGET_OTA_ASSERT_DEVICE := bogota
 TARGET_BOARD_PLATFORM := mt6855
-# TODO: should be good (otherwise prop.default ro.vendor.mgvi_name= mgvi_64_ww_armv82)
 TARGET_BOOTLOADER_BOARD_NAME := bogota
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
-# TODO: fix mt6855 file below
+# TODO: edit mt6855 file below
 TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/root/init.recovery.mt6855.rc
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TW_SKIP_ADDITIONAL_FSTAB := true
@@ -79,7 +74,7 @@ TARGET_NO_KERNEL := true
 # TODO: then why exists?
 
 # Vendor_Boot Offsets
-BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2 # actual 'bootopt=64S3,32N2,64N2 loglevel=4 initcall_debug=0' fails to build
+BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2 # good
 BOARD_PAGE_SIZE := 4096 # good
 # BOARD_KERNEL_PAGESIZE := 4096 # NEW flag from twrpdtgen, needs checking
 BOARD_BOOT_HEADER_VERSION := 4 # good
@@ -92,7 +87,7 @@ BOARD_DTB_OFFSET := 0x07c88000 # good
 BOARD_KERNEL_OFFSET := 0x00008000 # good
 BOARD_RAMDISK_OFFSET := 0x26f08000 # good
 BOARD_TAGS_OFFSET := 0x07c88000 # good
-BOARD_KERNEL_BASE := 0x3fff8000 # # not output by unpackbootimg, twrpdtgen value, LLM value = 0x40000000
+BOARD_KERNEL_BASE := 0x3fff8000 # # twrpdtgen value, not output by unpackbootimg
 BOARD_VENDOR_BASE := 0x3fff8000 # good BUT NEW flag, needs checking
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864 # good
 
@@ -213,7 +208,7 @@ TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone46/temp # can also try
 TW_SUPPORT_INPUT_1_2_HAPTICS := true
 TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
-TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/default" # could be: android.hardware.vibrator@2::IVibrator/default
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/default" # could also be: android.hardware.vibrator@2::IVibrator/default
 
 # Blacklist fingerprint sensor
 TW_INPUT_BLACKLIST := "hbtp_vm"
